@@ -1,0 +1,49 @@
+/* Snippet by: Rothinnpanna */
+/* Source: https://github.com/Rothinnpanna/obsidian-snippets */
+/* Version: 1.0.0 */
+
+/*/ =============== // =============== // =============== /*/
+/*
+@settings
+name: File Line Width
+id: file-line-width-snippet-settings
+settings:
+  -
+    id: file-line-width-snippet-desc
+    description: "Changes the file line width to be the *max* of a *fixed width* or a *percentage of the window width*<br>So it will choose the larger of the two values.<br><br>If you only want it to always have a fixed max width, set the relative width to 0."
+    type: info-text
+    markdown: true
+  -
+    id: file-line-width-snippet-fixed
+    title: Fixed width of file line (px)
+    type: variable-number
+    default: 700
+    format: px
+  -
+    id: file-line-width-snippet-relative
+    title: Relative width of file line (vw)
+    type: variable-number-slider
+    default: 50
+    format: vw
+    min: 0
+    max: 100
+    step: 5
+  -
+*/
+
+body {
+    --file-line-width: max(var(--file-line-width-snippet-fixed), var(--file-line-width-snippet-relative));
+
+    --file-line-width-snippet-fixed: 700px;
+    --file-line-width-snippet-relative: 50vw;
+}
+
+.style-settings-heading:is([data-id=file-line-width-snippet-settings],
+[data-id=file-line-width-snippet-settings-extended]) .setting-item-name {
+    color: var(--color-accent);
+}
+
+.setting-item.style-settings-info-text[data-id="file-line-width-snippet-desc"] .setting-item-description.style-settings-markdown {
+    font-size: calc(var(--font-ui-medium) - 1px);
+    padding-top: 0;
+}
